@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="center">
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="logo">
+    </div>
+    <div class="data-form shadow">
+      <!-- login form starts here -->
+      <form  class="sign-up form" [formGroup]="loginAdmin" accept-charset="utf-8"
+        *ngIf="showform === 'new'">
+        <h1>Sign In</h1>
+        <div class="form-group  first-child">
+          <div class="input email">
+            <input name="email" formControlName="email"  required placeholder="Email Id" class="form-control" id="email" data-position="top"
+              maxlength="255" type="email" autocomplete="off">
+              <div *ngIf="controls.email.touched && controls.email.errors">
+                <span class="custom-error" *ngIf="controls.email.errors.required">This field is
+                    required!
+                </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group  first-child">
+          <div class="input password">
+            <input name="password" formControlName="password"  required class="form-control" id="password" maxlength="50" minlength="6"
+              placeholder="Password" type="password">
+              <div *ngIf="controls.password.touched && controls.password.errors">
+                <span class="custom-error" *ngIf="controls.password.errors.required">This field is
+                    required!
+                </span>
+            </div>
+            <span class="form-note">
+            </span>
+          </div>
+        </div>
+
+
+        <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
+        <div class="text-center">
+          <button type="submit" class="registerbtn" (click)="loginfn()">Sign In</button>
+        </div>
+
+
+
+        <div class="container text-center">
+          <button type="submit" class="link-btn mb-10px"><a routerLinkActive="active"
+              routerLink='/forget-password'>Forget
+              password?</a></button>
+        </div>
+      </form>
+      <!-- login form ends here -->
+
+      <!-- signup form starts here -->
+
+      <form [formGroup]="adminRegister" class="sign-up form" accept-charset="utf-8" *ngIf="showform === 'new1'">
+
+        <h1>Create Account</h1>
+        <div class="form-group  first-child">
+          <div class="input name">
+            <input name="name" formControlName="fullname" required class="form-control" id="name" data-position="top"
+              minlength="2" maxlength="60" placeholder="Enter Full Name" autocomplete="off">
+            <div *ngIf="registerControls.fullname.touched && registerControls.fullname.errors">
+              <span class="custom-error" *ngIf="registerControls.fullname.errors.required">This
+                field is required!
+              </span>
+              <span class="custom-error" *ngIf="registerControls.fullname.errors.pattern">This
+                field is invalid!
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group  first-child">
+          <div class="input email">
+            <input name="email" formControlName="email" required placeholder="Email Address" class="form-control"
+              id="email" data-position="top" maxlength="255" type="email" autocomplete="off">
+            <div *ngIf="registerControls.email.touched && registerControls.email.errors">
+              <span class="custom-error" *ngIf="registerControls.email.errors.required">This field
+                is required!
+              </span>
+              <span class="custom-error" *ngIf="registerControls.email.errors.pattern">This field
+                is invalid!
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group  first-child">
+          <div class="input password">
+            <input name="password" required formControlName="password" class="form-control" id="password" maxlength="50"
+              minlength="6" placeholder="Password" type="password">
+            <div *ngIf="registerControls.password.touched && registerControls.password.errors">
+              <span class="custom-error" *ngIf="registerControls.password.errors.required">This
+                field is required!
+              </span>
+              <span class="custom-error" *ngIf="registerControls.password.errors.pattern">This
+                field is invalid!
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group  first-child">
+          <div class="input cpassword">
+            <input name="cpassword" required class="form-control checkempty" formControlName="confirmPassword"
+              id="cpassword" type="password" maxlength="50" minlength="6" placeholder="Confirm Password">
+            <div *ngIf="registerControls.confirmPassword.touched && registerControls.confirmPassword.errors">
+              <span class="custom-error" *ngIf="registerControls.confirmPassword.errors.required">This field is
+                required!
+              </span>
+              <span class="custom-error" *ngIf="registerControls.confirmPassword.errors.mustMatch">Password does not
+                match!
+              </span>
+            </div>
+          </div>
+        </div>
+        <p class="form-note">
+          A valid password should contain a minimum length of 6 characters & meet
+          the following criteria. A CAPITAL letter, a small letter, a number and a special
+          character.
+        </p>
+        <div class="text-center">
+          <button type="submit" class="registerbtn" [disabled]="adminRegister.invalid"
+          (click)="adminSignup()">Create
+            Account</button>
+        </div>
+      </form>
+
+      <!-- signup form ends here -->
+
+    </div>
+  </div>
+  <div class="text-center copyright-text">
+    <p>Copyright © 2022 JASTRA. All rights reserved.</p>
+  </div>
+</div>
